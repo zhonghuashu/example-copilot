@@ -1,0 +1,197 @@
+/* Modern, responsive, accessible styles for Task Manager */
+
+:root {
+  --primary: #4f8cff;
+  --danger: #ff4f4f;
+  --success: #4fff8c;
+  --bg: #f7f9fa;
+  --card-bg: #fff;
+  --text: #222;
+  --border-radius: 0.75rem;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+body.dark-mode {
+  --primary: #90b4ff;
+  --danger: #ff7b7b;
+  --success: #7bffb4;
+  --bg: #181c24;
+  --card-bg: #23283a;
+  --text: #f7f9fa;
+}
+
+.dark-toggle {
+  display: block;
+  margin: 0 auto 1rem auto;
+  background: var(--card-bg);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+}
+.dark-toggle.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+main {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+input[type="text"].input-error {
+  border-color: var(--danger);
+  background: #ffeaea;
+}
+
+button[type="submit"] {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button[type="submit"]:hover {
+  background: #3566b5;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg);
+  border-radius: var(--border-radius);
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  transition: background 0.2s;
+}
+
+li.completed {
+  background: var(--success);
+  text-decoration: line-through;
+  color: #555;
+}
+
+.task-label {
+  flex: 1;
+  cursor: pointer;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+button.delete {
+  background: var(--danger);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+button.delete:hover {
+  background: #b53535;
+}
+
+/* Filter buttons styles */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.filter-btn {
+  background: var(--bg);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+}
+.filter-btn.active,
+.filter-btn[aria-pressed="true"] {
+  background: var(--primary);
+  color: #fff;
+}
+.filter-btn:focus {
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 1rem;
+    margin-top: 1rem;
+    max-width: 98vw;
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
+  input[type="text"], button[type="submit"], .filter-btn {
+    font-size: 0.95rem;
+    padding: 0.6rem;
+  }
+  .filters {
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+  }
+}
