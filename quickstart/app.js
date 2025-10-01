@@ -2,6 +2,35 @@
 // Accessible, responsive, modern JS
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Social sharing functionality
+  const shareUrl = window.location.href;
+  const shareTitle = document.title;
+  const facebookBtn = document.getElementById('share-facebook');
+  const twitterBtn = document.getElementById('share-twitter');
+  const linkedinBtn = document.getElementById('share-linkedin');
+
+  function openShareWindow(url) {
+    window.open(url, '_blank', 'noopener,noreferrer,width=600,height=500');
+  }
+
+  if (facebookBtn) {
+    facebookBtn.addEventListener('click', () => {
+      const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+      openShareWindow(url);
+    });
+  }
+  if (twitterBtn) {
+    twitterBtn.addEventListener('click', () => {
+      const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`;
+      openShareWindow(url);
+    });
+  }
+  if (linkedinBtn) {
+    linkedinBtn.addEventListener('click', () => {
+      const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+      openShareWindow(url);
+    });
+  }
   const form = document.getElementById('task-form');
   const input = document.getElementById('task-input');
   const list = document.getElementById('task-list');
