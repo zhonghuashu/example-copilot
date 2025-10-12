@@ -26,6 +26,9 @@
             <button type="button" class="filter-btn" data-filter="pending" aria-pressed="false">Pending</button>
         </nav>
         <section aria-label="Task list">
+            <form id="task-search-form" aria-label="Search tasks" autocomplete="off">
+                <input type="text" id="task-search-input" name="search" placeholder="Search tasks by name..." aria-label="Search tasks by name">
+            </form>
             <ul id="task-list"></ul>
         </section>
     </main>

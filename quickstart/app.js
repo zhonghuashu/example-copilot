@@ -2,6 +2,21 @@
 // Accessible, responsive, modern JS
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Task search elements
+  const searchForm = document.getElementById('task-search-form');
+  const searchInput = document.getElementById('task-search-input');
+  let searchQuery = '';
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      searchQuery = searchInput.value.trim().toLowerCase();
+      renderTasks();
+    });
+    // Optional: prevent form submit
+    if (searchForm) {
+      searchForm.addEventListener('submit', e => e.preventDefault());
+    }
+  }
   // Social sharing functionality
   const shareUrl = window.location.href;
   const shareTitle = document.title;
@@ -114,6 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
       filtered = tasks.filter(t => t.completed);
     } else if (currentFilter === 'pending') {
       filtered = tasks.filter(t => !t.completed);
+    }
+    // Apply search filter
+    if (searchQuery) {
+      filtered = filtered.filter(t => t.text.toLowerCase().includes(searchQuery));
     }
     filtered.forEach((task, idx) => {
       const li = document.createElement('li');
